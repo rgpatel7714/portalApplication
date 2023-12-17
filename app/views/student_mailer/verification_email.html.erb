@@ -1,0 +1,13 @@
+
+Hello <%= @student.name%><br><br>
+
+<%if @student.varified%>
+you are verified you can log in with this creds<br>
+Email : <%= @student.email%><br>
+Password : <%= @student.password%><br>
+<%else%>
+You are not verified yet. You will get credentions once got verified
+<%end%>
+<br><br><br>
+
+Thanks!

@@ -11,7 +11,6 @@ class Admin::StudentsController < ApplicationController
   end
 
   def create
-    byebug
     @student = Student.new(student_params)
 
     respond_to do |format|
@@ -52,8 +51,11 @@ class Admin::StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.permit(:name,:email,:varified,:address,:date_of_birth);
-      params.permit(:name,:email,:varified,:address,:date_of_birth,:password) if params[:action] == 'create'
+      if params[:action] == 'create'
+        params.permit(:name,:email,:varified,:address,:date_of_birth,:password) 
+      else
+        params.permit(:name,:email,:varified,:address,:date_of_birth);
+      end
     end
     
 end
