@@ -27,6 +27,6 @@ class Admins::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     # Customize the redirect path after sign-in for students
-    admin_path(resource)
+    admin_students_path(resource)
   end
 end

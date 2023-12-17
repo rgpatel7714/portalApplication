@@ -1,0 +1,38 @@
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#= render "students/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autofocus: true, value: @student.name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %><br />
+    <%= form.date_field :date_of_birth, autofocus: true, value: @student.date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %><br />
+    <%= form.text_area :address, autofocus: true, value: @student.address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", value: @student.email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :varified %><br />
+    <%= form.check_box :varified, autofocus: true, value: @student.varified %>
+  </div>

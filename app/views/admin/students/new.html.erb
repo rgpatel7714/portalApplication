@@ -1,0 +1,16 @@
+<%= form_with url: admin_students_path, method: :post do |form| %>
+  <%= render 'form', student: @student, form: form %>
+  
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password", value: @student.password %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Go" %>
+  </div>
+<%end%>
+
+<%= link_to 'Back', admin_students_path %>

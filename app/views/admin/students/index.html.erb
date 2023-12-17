@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>students</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Date Of Birth</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Verified</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.id%></td>
+        <td><%= student.name%></td>
+        <td><%= student.date_of_birth%></td>
+        <td><%= student.address%></td>
+        <td><%= student.email%></td>
+        <td><%= student.varified%></td>
+        <td><%= link_to 'Edit', edit_admin_student_path(student) %></td>
+        <td><%= link_to 'Destroy', admin_student_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New student', new_admin_student_path %><br><br>
+<%= link_to 'Log Out', destroy_admin_session_path, method: :delete %>
