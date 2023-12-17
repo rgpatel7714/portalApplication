@@ -35,3 +35,8 @@
 
 <%= link_to 'New student', new_admin_student_path %><br><br>
 <%= link_to 'Log Out', destroy_admin_session_path, method: :delete %>
+
+<%= form_tag import_csv_admin_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Import CSV' %>
+<% end %>

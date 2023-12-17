@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :student
 
   namespace :admin do
-    resources :students
+    resources :students do
+      collection { post :import_csv }
+    end
+    
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

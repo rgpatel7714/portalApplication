@@ -43,6 +43,15 @@ class Admin::StudentsController < ApplicationController
     end
   end
 
+  def import_csv
+    if params[:file].present?
+      Student.import_csv(params[:file])
+      redirect_to admin_students_path, notice: 'CSV file imported successfully.'
+    else
+      redirect_to admin_students_path, alert: 'Please choose a CSV file to import.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
