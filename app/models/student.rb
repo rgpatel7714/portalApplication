@@ -7,9 +7,13 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  
+
   before_save :send_verification_email, if: :varified_changed?
   after_create :send_creation_mail
+
+  def valid_for_authentication?
+    super && varified
+  end
 
   def self.import_csv(file)
     CSV.foreach(file.path, headers: true) do |row|
